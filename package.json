@@ -1,0 +1,15 @@
+{
+  "name": "ulju-onsalim-cloudtype",
+  "version": "1.0.0",
+  "private": true,
+  "description": "울주온살림 정적 HTML을 CloudType Node.js로 배포하는 프로젝트",
+  "type": "module",
+  "scripts": {
+    "build": "node src/build.js",
+    "start": "node src/server.js",
+    "dev": "npm run build && npm start"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

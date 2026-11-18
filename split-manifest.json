@@ -1,0 +1,112 @@
+{
+  "source": "ulju_onsalim_v73_budget_selection_spacing.html",
+  "source_sha256": "0b3d1a3b65c414b85f13e7a8be0251f5bb61f37db84da82c1a115261966bb996",
+  "components": [
+    {
+      "kind": "css",
+      "path": "public/assets/styles.css",
+      "source_chars": 206873,
+      "sha256": "9d1d91d37baaff1bf0d39f94e848ead09d6ae22d8ef18331465cd9e0f644447b"
+    }
+  ],
+  "data_files": [
+    {
+      "id": "execution-data",
+      "path": "/assets/data/execution-data.json",
+      "file": "public/assets/data/execution-data.json",
+      "bytes": 313450,
+      "sha256": "c195d60b6bbe204e6603542933eec7a670699911a1ce1cdf2d8cf07f444332b0"
+    },
+    {
+      "id": "group-data",
+      "path": "/assets/data/group-data.json",
+      "file": "public/assets/data/group-data.json",
+      "bytes": 31569,
+      "sha256": "d87abd12d3a12bbaf8291bf7633d1f225c2312ace3f2febda00195d7d6b26291"
+    },
+    {
+      "id": "child-data",
+      "path": "/assets/data/child-data.json",
+      "file": "public/assets/data/child-data.json",
+      "bytes": 1523,
+      "sha256": "1a060c10c20bdb8ba21e2e8e44d8124d27c181ff96abadea2ef8f761ada2e21e"
+    },
+    {
+      "id": "historical-data",
+      "path": "/assets/data/historical-data.json",
+      "file": "public/assets/data/historical-data.json",
+      "bytes": 1184629,
+      "sha256": "250cca4191e3839bcacda2f8439f1d67dd08423de0d3dbabe00af4f9291a86d3"
+    },
+    {
+      "id": "budget-data",
+      "path": "/assets/data/budget-data.json",
+      "file": "public/assets/data/budget-data.json",
+      "bytes": 93663,
+      "sha256": "cc5b45692ad2a783094274e3da52d54408090ff1b9f23717e904774bb413b6e5"
+    },
+    {
+      "id": "page-data",
+      "path": "/assets/data/page-data.json",
+      "file": "public/assets/data/page-data.json",
+      "bytes": 172370,
+      "sha256": "b9a452f96a4ad247d84ebd30bc5f33cf4e7219f63f5fe819cea2a15ebc6c6fcf"
+    },
+    {
+      "id": "vector-data",
+      "path": "/assets/data/vector-data.json",
+      "file": "public/assets/data/vector-data.json",
+      "bytes": 1811519,
+      "sha256": "2ba20540f07ccc6addf9a72f9dda464c3e472d5106b053754cc725b183e80c1c"
+    },
+    {
+      "id": "funding-data",
+      "path": "/assets/data/funding-data.json",
+      "file": "public/assets/data/funding-data.json",
+      "bytes": 86344,
+      "sha256": "bdf216d698e84e5cce6973753e52fe81837b6d91be86335f5f9cf86bc84805ec"
+    },
+    {
+      "id": "phase-data",
+      "path": "/assets/data/phase-data.json",
+      "file": "public/assets/data/phase-data.json",
+      "bytes": 19101,
+      "sha256": "d812159938c5e484cded7f65e9d526afc01217d5939e9b3ace844f06bc9815a1"
+    },
+    {
+      "id": "fiscal-band-data",
+      "path": "/assets/data/fiscal-band-data.json",
+      "file": "public/assets/data/fiscal-band-data.json",
+      "bytes": 99887,
+      "sha256": "340095d79153a1d0d2d327e40ef48ad5348e40b9f640eae2221519e9d149699d"
+    }
+  ],
+  "scripts": [
+    {
+      "path": "/assets/scripts/01-app.js",
+      "file": "public/assets/scripts/01-app.js",
+      "bytes": 139386,
+      "sha256": "84fd00c11a3228179c5595b6ec889c58211af58119c8e8bb4b7287c110cc4c87"
+    },
+    {
+      "path": "/assets/scripts/02-jszip-3.10.1.js",
+      "file": "public/assets/scripts/02-jszip-3.10.1.js",
+      "bytes": 97630,
+      "sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e"
+    },
+    {
+      "path": "/assets/scripts/03-execution-imports.js",
+      "file": "public/assets/scripts/03-execution-imports.js",
+      "bytes": 79296,
+      "sha256": "f2adc8ee75196e0cea95978437cfda4a152b9ad0c91f81dcb5e96afa376a6b58"
+    },
+    {
+      "path": "/assets/scripts/04-search-bridge.js",
+      "file": "public/assets/scripts/04-search-bridge.js",
+      "bytes": 1100,
+      "sha256": "c82361075d49205aafce43fb2f29a31e5f9244ca18d7909a7733c5dd9e5cc07d"
+    }
+  ],
+  "html_bytes": 1650765,
+  "split_sha256": "c754714b0309cda70b2ffc4e4d87fbbceed9b66c90a4bd3306c7c93d7bed8d7b"
+}

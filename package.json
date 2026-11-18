@@ -1,15 +1,14 @@
 {
-  "name": "ulju-onsalim-v73-cloudtype",
-  "version": "1.0.0",
+  "name": "ulju-onsalim-v73-reliable",
+  "version": "1.1.0",
   "private": true,
-  "description": "울주온살림 v73 HTML/CSS/JS/데이터 분리 및 CloudType Node.js 배포",
+  "description": "울주온살림 v73 원본 보존형 HTML/CSS/JavaScript/JSON 분리 및 CloudType 배포",
   "type": "module",
   "scripts": {
-    "build": "node src/build.js",
-    "start": "node src/server.js",
+    "build": "node src/build.mjs",
+    "verify": "node src/verify.mjs",
+    "start": "node src/server.mjs",
     "dev": "npm run build && npm start"
   },
-  "engines": {
-    "node": ">=20"
-  }
+  "engines": { "node": ">=20" }
 }

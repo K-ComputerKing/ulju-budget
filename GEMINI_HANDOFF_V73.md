@@ -1,43 +1,38 @@
-# Gemini 개발 인수인계 — 울주온살림 v73
+# Gemini 인수인계 — 울주온살림 v73 안정형 분리·배포
 
-## 개발 목표
-윈도우 CMD에서 빌드·실행하고 GitHub `K-ComputerKing/ulju-budget`의 `main`을 CloudType(Node.js)에 배포. 이미 로컬에서 작동하는 기존 울주온살림 기능과 디자인을 유지하고, 버그 최소화.
+## 원칙
+- 최신 소스 기준: `ulju_onsalim_v73_budget_selection_spacing.html` (v65가 아님)
+- 정확한 사용자 PC 경로: `C:\Users\UIju\ulju-budget` (`ulji-budget` 표기는 오기)
+- GitHub: `https://github.com/K-ComputerKing/ulju-budget`
+- 배포: CloudType Node.js (Node 20 이상), main 브랜치
+- 목적: 원본 v73의 화면·기능·데이터를 유지한 채 재배포 업데이트 문제 해결
 
-## 인수인계 우선순위
-- **이번 첨부 원본은 v73(`ulju_onsalim_v73_budget_selection_spacing.html`)이며 이전 v65보다 새 버전입니다.** 업그레이드 과정에서 v65로 덮어쓰지 마세요.
-- 현재 제공 ZIP은 CSS 1개, 자바스크립트 4개, 원본 JSON 10개를 HTML에서 분리합니다.
-- 프레임워크 없이 Node.js HTTP 서버 방식입니다. `package.json`의 `npm ci`, `npm run build`, `npm start` 사용.
-- 데이터는 초기화 시 `assets/bootstrap.js`에서 JSON 10개를 fetch로 가져와 `type=application/json` 빈 스크립트 자리표시자에 주입합니다. 그 다음 기존 JS 4개를 순서대로 실행합니다. 초기 데이터 주입과 기존 JS의 전역 스코프 의존성을 유지해야 합니다.
-- 변경된 파일의 의존관계를 실제로 점검하고 `npm run build` + HTTP 로딩/브라우저 콘솔 검사로 검증해 주세요.
+## 현재 구현
+이 ZIP에서는 HTML/CSS/4개 JavaScript/10개 JSON 데이터가 파일로 분리되어 있습니다. `index.html`은 **소스 템플릿**이고, `src/build.mjs`가 원본 파일의 각 부분을 원위치에 끼워 넣어 **정확히 원본과 같은** `dist/index.html`을 만듭니다. 브라우저에서 JSON을 순차/병렬 fetch 하지 않으며 런타임 스크립트 동기화 문제가 없습니다.
 
-## 현재 코드 구조
-- `index.html`: DOM 및 JSON 자리표시자
-- `public/assets/styles.css`: 전체 CSS
-- `public/assets/data/*.json`: 예산 데이터, 집행 자료, 과거연도, 문서 벡터 등 10개 데이터 파일
-- `public/assets/scripts/01-app.js`: 주요 UI 애플리케이션
-- `public/assets/scripts/02-jszip-3.10.1.js`: ZIP 기능 라이브러리
-- `public/assets/scripts/03-execution-imports.js`: 집행자료 가져오기 관련
-- `public/assets/scripts/04-search-bridge.js`: 검색 UI 연결
-- `public/assets/bootstrap.js`: 데이터 로더 및 JS 순차 실행
-- `src/build.js`: 정적 파일을 `dist/`로 복사
-- `src/server.js`: `process.env.PORT` 기반 Node HTTP 서버, `/healthz`
+- `npm ci`
+- `npm run build`
+- `npm run verify`
+- `npm start`
+- `http://localhost:3000/`
+- `http://localhost:3000/version.json`
 
-## CloudType 설정
-Node.js 20 / repo `K-ComputerKing/ulju-budget` / branch main / Install `npm ci` / Build `npm run build` / Start `npm start` / default port 3000, PORT 변수 우선 / root subdir.
+원본 SHA-256이 `0b3d1a3b65c414b85f13e7a8be0251f5bb61f37db84da82c1a115261966bb996`이며 `npm run verify`가 동일성 검증을 합니다. `/healthz`와 `/version.json`을 서버가 제공합니다. CloudType 빌드 명령이 반드시 실행되어야 하며 소스 템플릿을 직접 서빙하면 실패합니다.
 
-## 원본 코드 관련 사실
-- 원본은 v73 단일 HTML. HTML 안에 예산/지출 관련 데이터가 포함되어 있었음.
-- 처음 v65를 CloudType에 배포하려다 실패했으나 정확한 빌드 오류 로그는 제공되지 않았음.
-- `localStorage` 기반 저장은 브라우저별로 독립적이며 실시간 공동 편집 DB가 아님.
-- `/healthz` 200 응답만으로 실제 브라우저 모든 기능 검증이 완료됐다고 단정하지 말 것.
+## 수정 시 주의
+1. 원본과 동일한 빌드를 유지하려면 `src/styles`, `src/scripts`, `src/data`, `index.html`을 직접 수정한 뒤 **매니페스트 파일 해시 및 예상 최종 HTML 해시도 변경하여 검증**해야 합니다. 현재 빌드 도구는 v73 원본과 동일함을 보장하므로 임의 수정은 의도적으로 검증 실패합니다. 향후 개발을 위해 빌더를 변경할 때에는 원본 보존 모드와 개발 모드를 명확히 구분하세요.
+2. 기능 재작성이나 데이터 삭제를 임의로 하지 말고, 프로젝트 내용과 사용자가 요청한 수정 범위를 먼저 비교하세요.
+3. CloudType 자동 배포가 안 된다면 로컬 `git log -1`, 원격 `main` SHA, CloudType 배포 대상 커밋 및 `/version.json` 값을 비교하세요.
+4. 소스 파일을 `C:\Users\UIju\ulju-budget`의 최상위에 덮어쓰세요. 하위 `ulju-v73-reliable-deploy` 폴더에만 두면 기존 프로젝트가 업데이트되지 않습니다.
+5. 이전 분리 패키지의 `public/assets/`가 GitHub에 남았는지도 확인하세요.
 
-## 보안 경고 (최우선)
-원본에는 외부 공개 주의 문구와 내부 집행 적요 데이터가 존재합니다. 분리한 JSON 파일도 브라우저에서 다운로드 가능한 공개 정적 리소스입니다. **실제 자료 공개가 승인되기 전에는 공개 GitHub/CloudType에 게시하지 마세요.** 사용자에게 공개용 익명화 데이터 대체, 권한 검토, 내부전용 접근 제어 방식을 안내하세요. 데이터를 단순히 서버의 `public`에서 숨기는 것이 아니라 인증된 서버 엔드포인트로 관리해야 비공개가 됩니다.
+## 보안
+원본 HTML에는 공개 부적절할 수 있는 내부 지출 적요 및 실제 예산 정보가 포함되어 있습니다. 이 배포 빌드는 이를 그대로 재구성하므로 *공개용 안전 버전이 아닙니다*. 소스와 JSON을 외부 AI 서비스에 업로드하는 행위 자체도 조직의 정보 처리 규정을 확인해야 합니다. 승인 없이 GitHub 공개 저장소/공개 CloudType으로 배포하지 마세요. 실제 사용자들의 브라우저 localStorage 저장은 자동 공유가 아닙니다.
 
-## 다음 AI가 할 일
-1. ZIP 압축 해제 후 `npm ci && npm run build && npm start`로 실행.
-2. `http://localhost:3000`와 `/healthz`, `/assets/data/budget-data.json` 응답 확인.
-3. 브라우저 콘솔 에러와 예산표/선택/검색/불러오기 기능 검증.
-4. CloudType 빌드 로그가 있다면 실제 원인부터 진단.
-5. **내부 자료 공개 승인 확인 전 배포 금지.** 승인 시 공개용 샘플 데이터가 필요한지 검토하고 변경 범위를 명확히 제시.
-6. 배포 뒤 GitHub `main` 및 CloudType 설정 확인.
+## 요청할 작업 순서
+- ZIP의 소스와 매니페스트 확인
+- `npm run build`와 `npm run verify` 실행
+- 정상 화면·예산 선택·화면 간격·검색·예산 및 집행관리 기능 브라우저 테스트
+- 로컬 경로 확인 및 원격 `main` 커밋과 CloudType 배포 대상 커밋 비교
+- CloudType 배포 후 `/version.json`에서 `v73` 확인
+- 실패하면 빌드 로그와 실행 로그를 받아 수정본 ZIP 생성

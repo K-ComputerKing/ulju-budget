@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>울주온살림 — 울주군 공유 예산관리 시스템</title><link rel="stylesheet" href="./assets/styles.css"></head><body>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>울주온살림 — 울주군 공유 예산관리 시스템</title><style>__ULJU_CSS_0__</style></head><body>
 
 <div id="dash-spend-modal" role="dialog" aria-modal="true" aria-label="집행 내역 입력"><form class="dash-modal-box" id="dash-spend-form"><h2>집행내역 기록</h2><p class="mod-hint">담당자가 확인한 금액만 입력하세요. 여기에 등록한 금액은 공식 집행액이 아닌 <b>자체 관리용 참고 수치</b>입니다.</p><label for="dash-spend-budget">내 예산 항목</label><select id="dash-spend-budget" required></select><label for="dash-spend-date">기록일</label><input id="dash-spend-date" type="date" required><label for="dash-spend-amount">집행액 (원)</label><input id="dash-spend-amount" type="number" min="1" step="1" placeholder="예: 150000" required><label for="dash-spend-desc">내용</label><input id="dash-spend-desc" maxlength="80" placeholder="예: 홍보물 제작비" required><div id="dash-spend-error"></div><div class="modal-acts"><button type="button" id="dash-spend-cancel">취소</button><button type="submit">장부에 기록</button></div></form></div>
 <section class="profile-gate show" id="profile-gate" role="dialog" aria-modal="true" aria-label="팀 담당자 프로필 선택">
@@ -303,11 +303,11 @@
   <div class="plan-dialog-actions"><button type="button" id="plan-match-cancel">취소</button><button type="submit" id="plan-match-yes">확인 후 연결</button></div></form></div>
 </div>
 
-<script type="application/json" id="execution-data"></script>
-<script type="application/json" id="group-data"></script><script type="application/json" id="child-data"></script><script type="application/json" id="historical-data"></script>
-<script type="application/json" id="budget-data"></script><script type="application/json" id="page-data"></script><script type="application/json" id="vector-data"></script><script type="application/json" id="funding-data"></script><script type="application/json" id="phase-data"></script><script type="application/json" id="fiscal-band-data"></script><script src="./assets/bootstrap.js"></script>
+<script type="application/json" id="execution-data">__ULJU_DATA_EXECUTION_DATA__</script>
+<script type="application/json" id="group-data">__ULJU_DATA_GROUP_DATA__</script><script type="application/json" id="child-data">__ULJU_DATA_CHILD_DATA__</script><script type="application/json" id="historical-data">__ULJU_DATA_HISTORICAL_DATA__</script>
+<script type="application/json" id="budget-data">__ULJU_DATA_BUDGET_DATA__</script><script type="application/json" id="page-data">__ULJU_DATA_PAGE_DATA__</script><script type="application/json" id="vector-data">__ULJU_DATA_VECTOR_DATA__</script><script type="application/json" id="funding-data">__ULJU_DATA_FUNDING_DATA__</script><script type="application/json" id="phase-data">__ULJU_DATA_PHASE_DATA__</script><script type="application/json" id="fiscal-band-data">__ULJU_DATA_FISCAL_BAND_DATA__</script><script>__ULJU_SCRIPT_01__</script>
+<script>__ULJU_SCRIPT_02__</script>
+<script>__ULJU_SCRIPT_03__</script>
 
-
-
-
+<script>__ULJU_SCRIPT_04__</script>
 </body></html>
